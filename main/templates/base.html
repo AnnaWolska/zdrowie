@@ -23,22 +23,23 @@
     <div class="col-md-3 text-end">
         {%  if user.is_authenticated %}
             <a type ="button" class="btn btn-outline-primary me-2" href="{% url "logout" %}">Wyloguj</a>
+            <p>jesteś zalogowany/a jako {{ request.user }}</p>
         {% else %}
             <a type="button" class="btn btn-outline-primary me-2" href="{% url "login" %}">Zaloguj</a>
             <a type="button" class="btn btn-primary" href="{% url "register:register" %}">Zarejestruj</a>
+            <p>nie jesteś zalogowany/a</p>
         {% endif %}
     </div>
 
 
       <ul class="nav nav-pills">
 {#        <li class="nav-item"><a href="{% url 'main:home' %}" class="nav-link active" aria-current="page">Strona główna</a></li>#}
-        <li class="nav-item"><a href="{% url 'health:health_view' %}" class="nav-link">Lista pomiarów</a></li>
-
+{#        <li class="nav-item"><a href="{% url 'health:health_view' %}" class="nav-link">Lista pomiarów</a></li>#}
 {#        <li class="nav-item"><a href="{% url 'main:contact' %}" class="nav-link">kontakt</a></li>#}
 {#        <li class="nav-item"><a href="{% url 'main:hello' %}" class="nav-link">O stronie</a></li>#}
-          {% if user.id %}
-          <li class="nav-item"> <a href="{% url 'main:userprofile' user.id %}" class="nav-link">Mój profil ({{ request.user }}) </a> </li>
-        {% endif %}
+{#          {% if user.id %}#}
+{#          <li class="nav-item"> <a href="{% url 'main:userprofile' user.id %}" class="nav-link">Mój profil ({{ request.user }}) </a> </li>#}
+{#        {% endif %}#}
       </ul>
     </header>
 </div>

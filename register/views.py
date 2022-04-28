@@ -9,9 +9,9 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             user = form.save()
-            permission = Permission.objects.get(name="can add tag")
-            user.user_premissions.add(permission)
-        return redirect(reverse('home'))
+            # permission = Permission.objects.get(name="can add tag")
+            # user.user_premissions.add(permission)
+        return redirect(reverse('health:heath_view'))
     else:
         form = RegisterForm()
     return render(response, "accounts/register.html", {"form":form})

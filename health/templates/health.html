@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   <h3>  <a href = "{% url 'health:add_glucos' %}"> Dodaj pomiary cukru</a>  </h3>
+     <h3>  <a href = "{% url 'health:add_bloodpressure' %}"> Dodaj pomiary ciśnienia</a>  </h3>
+
+    <h2>Lista pomiarów:</h2>
+    <h4>ciśnienie:</h4>
+  {% for bloodpressure in bloodpressures  %}
+        <div class="list-group">
+        <ol>
+            <li class="list-group-item">
+               {{ bloodpressure.user}}    {{  bloodpressure.date }} <{{ bloodpressure.result1 }} / {{ bloodpressure.result2 }}mmHg , {{ bloodpressure.comment}}
+
+            </li>
+        </ol>
+        </div>
+    {% endfor %}
+            <h4>glukoza we krwi:</h4>
+      {% for glucos in glucoses  %}
+        <div class="list-group">
+        <ol>
+            <li class="list-group-item">
+               {{ glucos.user}}    {{  glucos.date }} <{{  glucos.result1 }} mg/dl , {{ glucos.comment}}
+
+            </li>
+        </ol>
+        </div>
+    {% endfor %}
+
+{% endblock %}

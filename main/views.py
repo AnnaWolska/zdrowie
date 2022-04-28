@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from main.forms import ContactForm, UserProfileForm
 from . import services
 from django.contrib.auth import get_user_model
-
+from django.contrib.auth import  authenticate, login
 
 def contact(request):
     if request.method == "POST":
@@ -37,5 +37,10 @@ def user_profile(request, user_id):
             for field in form.fields:
                 form.fields[field].disabled = True
             form.helper.inputs = []
-    return render(request, 'main/userprofile.html', {'form': form})
+    return render(request, 'userprofile.html', {'form': form})
+
+
+def login(request):
+    username = request.POST('user')
+
 

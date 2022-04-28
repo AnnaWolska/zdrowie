@@ -18,7 +18,7 @@ class Bloodpressure(models.Model):
 
 
 class Glucoses(models.Model):
-    user = models.ForeignKey("auth.User", on_delete=models.CASCADE, related_name="bloodpressures")
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE, related_name="glucoses")
     date = models.DateTimeField(auto_now_add=True)
     result1 = models.IntegerField(null=True, blank=True)
     # result2 = models.IntegerField(null=True, blank=True)
