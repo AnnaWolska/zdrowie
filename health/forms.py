@@ -13,9 +13,9 @@ class GlucosForm(forms.ModelForm):
 
     class Meta:
         model = Glucoses
-        fields = "user", "result1", "comment"
+        fields = "result1", "comment"
         labels = {
-            "użytkownik",
+            # "użytkownik",
             "wynik",
             "komentarz"
         }
@@ -28,7 +28,7 @@ class GlucosForm(forms.ModelForm):
             # to jest dwa razy metod i działa, nie ma action, o co chodzi?
             self.helper.layout = Layout(
                 Fieldset(
-                    "użytkownik",
+                    # "użytkownik",
                     "wynik",
                     "komentarz"
                 ),
@@ -43,9 +43,9 @@ class BloodpressureForm(forms.ModelForm):
 
     class Meta:
         model = Bloodpressure
-        fields = "user", "result1", "result2", "comment"
+        fields =  "result1", "result2", "comment"
         lebels = {
-        "użytkownik",
+        # "użytkownik",
         "wynik1",
         "wynik2"
         "komentarz"
@@ -59,7 +59,7 @@ class BloodpressureForm(forms.ModelForm):
             # to jest dwa razy metod i działa, nie ma action, o co chodzi?
             self.helper.layout = Layout(
                 Fieldset(
-                    "użytkownik",
+                    # "użytkownik",
                     "wynik",
                     "komentarz"
                 ),

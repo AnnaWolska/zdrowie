@@ -8,11 +8,12 @@ from health.forms import GlucosForm, BloodpressureForm
 # from django.contrib.auth.models import AnonymousUser
 # from health.forms import HealthForm
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
-
+@login_required()
 def health_view(request):
-    bloodpressures = Bloodpressure.objects.all()
-    glucoses = Glucoses.objects.all()
+    bloodpressures = Bloodpressure.objects.filter(user=request.user)
+    glucoses = Glucoses.objects.filter(user=request.user)
     context = {"bloodpressures": bloodpressures, "glucoses":glucoses}
     return render(request, "health.html", context)
 
@@ -23,7 +24,9 @@ def add_glucos(request):
         form = GlucosForm(request.POST, request.FILES)
         # formset = AuthorFormSet(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
             # for f in form.cleaned_data:
             #     if f:
             #         author, _ = Author.objects.get_or_create(**f)
@@ -45,7 +48,9 @@ def add_bloodpressure(request):
         form = BloodpressureForm(request.POST, request.FILES)
         # formset = AuthorFormSet(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
             # for f in form.cleaned_data:
             #     if f:
             #         author, _ = Author.objects.get_or_create(**f)
